@@ -1,6 +1,9 @@
 public class Main {
     static boolean xTurn=true;
+    static Board window;
     public static void main(String[]args){
-    Board window = new Board();
+
+        window = new Board();
+
     }
 }

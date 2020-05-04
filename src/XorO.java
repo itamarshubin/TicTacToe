@@ -6,13 +6,14 @@ import java.awt.event.MouseListener;
 public class XorO extends JButton implements MouseListener {
 private Boolean isClicked;
 private String text;
+private int row;
+private int col;
     public XorO(){
         Font font = new Font("Arial", Font.BOLD, 64);
         this.setFont(font);
-        this.isClicked=false;
-        this.setSize(200,200);
-        this.addMouseListener(this);
 
+        this.isClicked=false;
+        this.addMouseListener(this);
     }
 
 
@@ -32,6 +33,20 @@ private String text;
     public void setText(String text) {
         this.text = text;
     }
+    public int getCol() {
+        return col;
+    }
+    public int getRow() {
+        return row;
+    }
+    public void setCol(int col) {
+        this.col = col;
+    }
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    //the mouseListeners
     @Override
     public void mouseClicked(MouseEvent e) {
             if (!this.isClicked)
@@ -41,26 +56,22 @@ private String text;
             else
                 this.setText("O");
             Main.xTurn=!Main.xTurn;
-            this.setEnabled(false);
+
             this.setClicked(true);
         }
+        check.print(this.row,this.col);
     }
-
     @Override
     public void mousePressed(MouseEvent e) {
 
     }
-
     @Override
     public void mouseReleased(MouseEvent e) {
-
     }
-
     @Override
     public void mouseEntered(MouseEvent e) {
 
     }
-
     @Override
     public void mouseExited(MouseEvent e) {
 
