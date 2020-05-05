@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Board extends JFrame {
-private XorO[][] button=new XorO[3][3];
+private theButton[][] button=new theButton[3][3];
         public Board(){
 
             this.setSize(600,600);
@@ -14,7 +14,7 @@ private XorO[][] button=new XorO[3][3];
             //create and add the buttons to the frame
             for (int i = 0; i < button.length; i++) {
                 for (int j = 0; j <button[0].length ; j++) {
-                    button[i][j]=new XorO();
+                    button[i][j]=new theButton();
                     button[i][j].setRow(i);
                     button[i][j].setCol(j);
                     this.add(button[i][j]);
@@ -24,7 +24,7 @@ private XorO[][] button=new XorO[3][3];
         }
 
 
-    public XorO getSpecificButton(int row,int col) {
+    public theButton getSpecificButton(int row,int col) {
         return button[row][col];
     }
 }

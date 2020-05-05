@@ -3,12 +3,13 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class XorO extends JButton implements MouseListener {
+public class theButton extends JButton implements MouseListener {
 private Boolean isClicked;
 private String text;
 private int row;
 private int col;
-    public XorO(){
+
+    public theButton(){
         Font font = new Font("Arial", Font.BOLD, 64);
         this.setFont(font);
 
