@@ -1,10 +1,54 @@
 public class check {
 
-    public static void print(int row,int col){
+    public static char theWinner(int row,int col){
+        char winner='-';
 
         theButton temp;
         temp = Main.window.getSpecificButton(row,col);
-        System.out.println("the text on this button is:"+temp.getText());
 
+        //check if 3 int the row
+        int count = 0;
+        for (int i = 0; i < 3; i++) {
+            if ((Main.window.getSpecificButton(row,i).getTEXT())==(temp.getTEXT()))
+                count++;
+        }
+        if (count==3)
+        {
+            winner = temp.getTEXT();
+            return winner;
+        }
+        count = 0;
+        for (int i = 0; i < 3; i++) {
+            if ((Main.window.getSpecificButton(i,col).getTEXT())==(temp.getTEXT()))
+                count++;
+        }
+        if (count==3)
+        {
+            winner = temp.getTEXT();
+            return winner;
+        }
+        count = 0;
+        for (int i = 0; i < 3; i++) {
+            if ((Main.window.getSpecificButton(i,i).getTEXT())==(temp.getTEXT()))
+                count++;
+        }
+        if (count==3)
+        {
+            winner = temp.getTEXT();
+            return winner;
+        }
+
+        count=0;
+        for (int i = 0; i < 3; i++) {
+            if ((Main.window.getSpecificButton(i,2-i).getTEXT())==(temp.getTEXT()))
+                count++;
+        }
+        if (count==3)
+        {
+            winner = temp.getTEXT();
+            return winner;
+        }
+        return winner;
     }
+
 }

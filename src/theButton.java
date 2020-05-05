@@ -5,16 +5,18 @@ import java.awt.event.MouseListener;
 
 public class theButton extends JButton implements MouseListener {
 private Boolean isClicked;
-private String text;
+private char TEXT;
 private int row;
 private int col;
 
-    public theButton(){
+    public theButton(int Row,int Col){
         Font font = new Font("Arial", Font.BOLD, 64);
         this.setFont(font);
 
         this.isClicked=false;
         this.addMouseListener(this);
+        this.row=Row;
+        this.col=Col;
     }
 
 
@@ -23,16 +25,15 @@ private int col;
     public Boolean getClicked() {
         return isClicked;
     }
-    @Override
-    public String getText() {
-        return text;
+    public char getTEXT() {
+        return TEXT;
     }
     public void setClicked(Boolean clicked) {
         isClicked = clicked;
     }
-    @Override
-    public void setText(String text) {
-        this.text = text;
+    public void setTEXT(char text) {
+        this.TEXT = text;
+        this.setText(this.getTEXT()+"");
     }
     public int getCol() {
         return col;
@@ -52,15 +53,21 @@ private int col;
     public void mouseClicked(MouseEvent e) {
             if (!this.isClicked)
         {
+            Main.tideCheck++;
             if(Main.xTurn)
-                this.setText("X");
+                this.setTEXT('x');
             else
-                this.setText("O");
+                this.setTEXT('O');
             Main.xTurn=!Main.xTurn;
 
             this.setClicked(true);
         }
-        check.print(this.row,this.col);
+        char theWinner=check.theWinner(this.row,this.col);
+        if (theWinner!='-')
+            Main.stopTheGame(theWinner);
+        else
+            if (Main.tideCheck==9)
+              Main.tide();
     }
     @Override
     public void mousePressed(MouseEvent e) {
